@@ -6,7 +6,7 @@ NOTE: Conditional render requires customer login.
 
 <b>But for this demo just hit the login button</b>
 
-<a href="https://shopicart-react.netlify.app/" target="_blank">Mockup deploy here</a>
+<a href="https://black-friday-offers-spa.netlify.app/" target="_blank">Mockup deploy here</a>
 
 What to do":
 
