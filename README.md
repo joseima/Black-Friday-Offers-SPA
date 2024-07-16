@@ -1,6 +1,6 @@
 <h1>Black Friday Offers SPA</h1>
 
-Landing SPA to temporal promotions for  clients,  synchronized with client products catalog and clients db.
+Landing SPA with temporal promotions for clients,  synchronized with products catalog and clients db.
 
 NOTE: Conditional render requires customer login. 
 

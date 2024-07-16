@@ -1,20 +1,23 @@
-import {  CartState, RemoveFromCartAction, ClearCartAction, CartAction, AddToCartAction} from '../types';
+import {  CartState, RemoveFromCartAction, CartAction, ClearCartAction,  AddToCartAction} from '../types';
 import { saveToStorage, getFromStorage, resetStorage } from '../utils/storage';
 
-export const cartInitialState = getFromStorage('_cart_') || []
+export const cartInitialState : CartState  = getFromStorage('_cart_') || []
 
 export const CART_ACTION_TYPES = {
   ADD_TO_CART: 'ADD_TO_CART',
   REMOVE_FROM_CART: 'REMOVE_FROM_CART',
-  CLEAR_CART: 'CLEAR_CART'
-} as const
+  CLEAR_CART: 'CLEAR_CART',
+} as const;
+
 
 type UpdateStateByAction = {
-  [key in keyof typeof CART_ACTION_TYPES]: (state: CartState, action: CartAction) => CartState;
-};
+  [CART_ACTION_TYPES.ADD_TO_CART]: (state: CartState, action: AddToCartAction) => CartState;
+  [CART_ACTION_TYPES.REMOVE_FROM_CART]: (state: CartState, action: RemoveFromCartAction) => CartState;
+  [CART_ACTION_TYPES.CLEAR_CART]: (state: CartState, action: ClearCartAction) => CartState;
+}
 
-const UPDATE_STATE_BY_ACTION: UpdateStateByAction = {
-  [CART_ACTION_TYPES.ADD_TO_CART]: (state, action) => {
+const UPDATE_STATE_BY_ACTION: UpdateStateByAction= {
+  [CART_ACTION_TYPES.ADD_TO_CART]: (state, action ) => {
     const { id } = (action as AddToCartAction).payload;
     const productInCartIndex = state.findIndex((item) => item.id === id);
     if (productInCartIndex >= 0) {
@@ -33,7 +36,7 @@ const UPDATE_STATE_BY_ACTION: UpdateStateByAction = {
     saveToStorage('_cart_', newState);
     return newState;
   },
-  [CART_ACTION_TYPES.REMOVE_FROM_CART]: (state, action) => {
+  [CART_ACTION_TYPES.REMOVE_FROM_CART]: (state: CartState, action: CartAction ) => {
     const { id } = (action as RemoveFromCartAction).payload;
     const newState = state.filter((item) => item.id !== id);
     saveToStorage('_cart_', newState);
@@ -41,12 +44,11 @@ const UPDATE_STATE_BY_ACTION: UpdateStateByAction = {
   },
   [CART_ACTION_TYPES.CLEAR_CART]: () => {
     resetStorage('_cart_');
-    return cartInitialState;
+    return [];
   },
 };
 
-export const cartReducer = (state: CartState, action: CartAction  ): CartState => {
-  const { type: actionType } = action
-  const updateState = UPDATE_STATE_BY_ACTION[actionType]
+export const cartReducer = (state: CartState, action: CartAction ): CartState => {
+  const updateState = UPDATE_STATE_BY_ACTION[action.type]
   return updateState ? updateState(state, action) : state
 }

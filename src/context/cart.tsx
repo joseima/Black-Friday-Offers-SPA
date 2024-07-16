@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { createContext, useReducer, ReactNode, useEffect, useState } from 'react'
 import { type User, type Signed, Product, CartState } from '../types'
 import { cartReducer, cartInitialState} from '../reducers/cart'
 import { getFromStorage, saveToStorage, resetStorage } from '../utils/storage'
 
-const defaultAccount = {
+const defaultAccount : User = {
   name: "Admin",
   email: "mail@web.com",
   password: "123"
@@ -31,12 +32,12 @@ interface CartProviderProps {
 const useCartReducer = () => {
   const [state, dispatch] = useReducer(cartReducer, cartInitialState)
 
-  const addToCart = (product : Product) => dispatch({
+  const addToCart = (product: Product) => dispatch({
     type: 'ADD_TO_CART',
     payload: product
   })
 
-  const removeFromCart = (product : Product)  => dispatch({
+  const removeFromCart = (product: Product)  => dispatch({
     type: 'REMOVE_FROM_CART',
     payload: product
   })
