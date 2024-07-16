@@ -1,0 +1,27 @@
+.filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.filters > div {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filters select, .filters option  {
+    font-weight: 400;
+    width: 130px;
+    padding: 6px;
+    font-size: 1rem;
+}
+.filters label {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+}
+input[type=range] {
+    width: 100px;
+}
