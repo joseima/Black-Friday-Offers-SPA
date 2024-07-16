@@ -44,4 +44,4 @@ export interface Product {
     type: 'CLEAR_CART';
   }
   
-  export type CartAction = AddToCartAction | RemoveFromCartAction | ClearCartAction;
+  export type CartAction = AddToCartAction | RemoveFromCartAction | ClearCartAction ;
