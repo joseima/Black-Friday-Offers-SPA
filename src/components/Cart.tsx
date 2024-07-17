@@ -27,7 +27,7 @@ const CartItem: React.FC<CartItemProps> = ({ image, price, title, quantity, addT
         <small>
           Qty: {quantity}
         </small>
-        <button className='bg-green' onClick={addToCart}>+</button>
+        <button className='bg-green bg-opacity-50' onClick={addToCart}>+</button>
       </footer>
     </li>
   )

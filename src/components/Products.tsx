@@ -28,7 +28,7 @@ export const Products: React.FC<ProductsProps> = ({ products }) => {
               </div>
               <div>
                 <button
-                  style={{ backgroundColor: isProductInCart ? '#c71212' : '#00593b' }}
+                  style={{ background: isProductInCart ? 'linear-gradient(270deg,#ff4980,#ff1d24)' : 'linear-gradient(270deg,#646cff,#ff4980)' }}
                   onClick={() => {
                     isProductInCart ? removeFromCart(product) : addToCart(product)
                   }}

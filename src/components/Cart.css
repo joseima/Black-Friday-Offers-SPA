@@ -1,22 +1,29 @@
 .cart {
-    background: #000;
+    background: linear-gradient(170deg, #212138, #0a0712);
     display: none;
-    padding: 0px 30px 30px;
+    padding: 10px 20px 20px;
     position: fixed;
-    right: 0px;
-    top: 0px;
+    right: 8px;
+    top: 8px;
     width: 260px;
     overflow-y: auto;
+    box-shadow: -6px 6px 14px #ffbf8861;
   }
   
   .cart img {
     aspect-ratio: 4/3;
     width: 30%;
+    margin-bottom: 10px;
   }
   
   .cart li {
     border-bottom: 1px solid #444;
     padding: 16px 0px;
+    display: flex;
+    justify-content:space-evenly;
+    width: 100%;
+    align-items: flex-start;
+    flex-wrap: wrap;
   }
   
   .cart footer {
@@ -27,13 +34,14 @@
   }
   
   .cart footer button {
-    padding: 8px;
+    margin: 10px 0px;
+    padding: 0px 8px;
   }
   
 
   .cart-button {
     align-items: center;
-    background: #09f;
+    background:   linear-gradient(270deg, #4f56ff, #ff4980);
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -41,8 +49,8 @@
     justify-content: center;
     padding: 4px;
     position: fixed;
-    right: 8px;
-    top: 8px;
+    right: 28px;
+    top: 16px;
     transition: all .3s ease;
     width: 32px;
     z-index: 9999;
@@ -58,6 +66,6 @@
   }
   .clear-cart-button {
     margin-top: 20px;
-    background: #c71212;
+    background: linear-gradient(270deg,#ff4980,#ff1d24);
   }
 

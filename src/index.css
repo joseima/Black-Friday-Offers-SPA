@@ -15,7 +15,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background: linear-gradient(70deg, #242424, #0a0712);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -85,7 +85,10 @@ header {
 }
 
 h1 {
-  color: rgb(251, 255, 0);
+  background-image: linear-gradient(270deg, #ffea4f, #ff4980);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: 700;
   font-size: 2rem;
 }
