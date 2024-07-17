@@ -10,10 +10,12 @@ const fakeProduct = {
     "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
 }
 
-test('unit test cart reducer', async () => {
-    expect(cartReducer([], { 
-        type: 'ADD_TO_CART', 
-        payload: fakeProduct 
-    })).toEqual([{ id: 1, quantity: 1 }])
-  });
+test.describe('unit tets for the cart reducer', () => {
+    test('When add a product to cart the quantity must be aded', async () => {
+        expect(cartReducer([], { 
+            type: 'ADD_TO_CART', 
+            payload: fakeProduct 
+        })).toEqual([{ id: 1, quantity: 1 }])
+    })
+})
 
