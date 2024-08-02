@@ -30,6 +30,9 @@
   text-align: center;
   width: 100%;
 }
+* {
+  transition: all ease-in .3s;
+}
 
 body {
   margin: 0;

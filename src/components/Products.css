@@ -31,8 +31,44 @@
   
   .products h3 {
     margin: 0;
+    color: #ff9d64;
+    font-weight: 600;
+    transition: all .3s ease;
+    cursor: pointer;
+  }
+  .products li:hover h3 {
+    color: #d664ff;
+  }
+  .products li .closeIcon  {
+    background-color: #7134ff;
+    top: 10px;
+    position: absolute;
+    right: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .products li .closeIcon:hover {
+    background-color: #ff34cc;
   }
   
+  .products li p.product-desc, .products li .closeIcon {
+    display:  none;
+  }
+  .products li.active {
+    transform: translateX(-50%);
+    background: linear-gradient(170deg, #212138, #0a0712);
+    padding: 20px;
+    left: 50%;
+    top: 20%;
+    width: 400px;
+    overflow-y: auto;
+    position: fixed;
+    box-shadow: -6px 6px 14px #ffbf88aa;
+  }
+  .products li.active p.product-desc, .products li.active .closeIcon  {
+    display:  block;
+  }
+
   .products span {
     font-size: 1rem;
     opacity: .9;
@@ -46,7 +82,22 @@
     object-fit: cover;
     background: #fff;
   }
-
+  .products .priceBox {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .products .priceBox h5 {
+    color: #646cff;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .products .priceBox {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .products li.active .priceBox h5,   .products li.active h3 {
+    font-size: 20px;
+  }
   .products button {
     border-color: #646cff;
   }

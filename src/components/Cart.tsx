@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useId, useState } from 'react'
-import { CartIcon, ClearCartIcon, CloseIcon } from '../utils/icons'
+import { CartIcon,  CloseIcon, RemoveFromCartIcon } from '../utils/icons'
 import './Cart.css'
 import { useCart } from '../hooks/useCart'
 
@@ -10,9 +10,10 @@ interface CartItemProps {
   title: string;
   quantity: number;
   addToCart: () => void;
+  removeFromCart: () => void;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ image, price, title, quantity, addToCart }) => {
+const CartItem: React.FC<CartItemProps> = ({ image, price, title, quantity, addToCart, removeFromCart }) => {
   return (
     <li>
       <img
@@ -28,6 +29,14 @@ const CartItem: React.FC<CartItemProps> = ({ image, price, title, quantity, addT
           Qty: {quantity}
         </small>
         <button className='bg-green bg-opacity-50' onClick={addToCart}>+</button>
+        <button
+                  style={{
+                    backgroundImage: 'linear-gradient(270deg, #ff4980, #ff1d24)',
+                  }}
+                  onClick={removeFromCart }
+                >
+                  <RemoveFromCartIcon />
+                </button>
       </footer>
     </li>
   )
@@ -36,12 +45,13 @@ const CartItem: React.FC<CartItemProps> = ({ image, price, title, quantity, addT
 export const Cart: React.FC  = () => {
   const CartCheckboxId = useId()
   const [cartOpen, setCartOpen] = useState(false)
-  const { addToCart, clearCart, cart } = useCart()
+  const { addToCart, removeFromCart, cart } = useCart()
 
 
   return (
     <>
       <label className='cart-button' onClick={() => setCartOpen( !cartOpen )} htmlFor={CartCheckboxId}>
+            {  cart.length > 0 && <p>{cart.length}</p>}
             { cartOpen ? <CloseIcon /> : <CartIcon /> }
       </label>
       <input className='switch-checkbox' id={CartCheckboxId} type='checkbox' hidden />
@@ -51,13 +61,14 @@ export const Cart: React.FC  = () => {
             <CartItem
               key={product.id}
               addToCart={() => addToCart(product)}
+              removeFromCart={() => removeFromCart(product)}
               {...product}
             />
           ))}
         </ul>
 
-        <button className='clear-cart-button' onClick={clearCart}>
-          <ClearCartIcon />
+        <button className='clear-cart-button' >
+          Process Order
         </button>
       </aside>
     </>

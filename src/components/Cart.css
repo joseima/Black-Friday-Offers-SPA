@@ -66,6 +66,10 @@
   }
   .clear-cart-button {
     margin-top: 20px;
-    background: linear-gradient(270deg,#ff4980,#ff1d24);
+    background: linear-gradient(270deg, #4f56ff, #ff4980);
+    transition: all .3s ease-in;
   }
-
+  .clear-cart-button:hover {
+    margin-top: 20px;
+    background: linear-gradient(170deg, #4f56ff, #ff4980);
+  }
